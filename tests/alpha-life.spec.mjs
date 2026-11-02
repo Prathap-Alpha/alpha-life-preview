@@ -107,10 +107,10 @@ test.describe('media and motion', () => {
   });
   test('videos get their source only when scrolled to, and the file is served', async ({ page }) => {
     await page.goto('./');
-    const v = page.locator('#how video');
+    const v = page.locator('#updates video');
     await v.scrollIntoViewIfNeeded();
-    await expect(v.locator('source')).toHaveAttribute('src', 'assets/overview-loop.mp4');
-    const r = await page.request.get('./assets/overview-loop.mp4');
+    await expect(v.locator('source')).toHaveAttribute('src', 'assets/final-loop.mp4');
+    const r = await page.request.get('./assets/final-loop.mp4');
     expect(r.status()).toBe(200);
     expect((await r.body()).length).toBeGreaterThan(100000); // bundled test Chromium has no H.264, so playback itself is checked in real Chrome
   });
@@ -122,7 +122,7 @@ test.describe('media and motion', () => {
   });
   test('missing asset: page still works, alt text kept, no overflow', async ({ page }) => {
     await page.route('**/assets/moment-1.jpg', r => r.abort());
-    await page.route('**/assets/overview-loop.mp4', r => r.abort());
+    await page.route('**/assets/final-loop.mp4', r => r.abort());
     const errors = []; page.on('pageerror', e => errors.push(e.message));
     await page.goto('./'); await page.locator('#moments').scrollIntoViewIfNeeded(); await page.waitForTimeout(600);
     expect(errors).toEqual([]);
@@ -132,8 +132,8 @@ test.describe('media and motion', () => {
   test('reduced motion: content visible, videos not auto-loaded', async ({ browser }) => {
     const ctx = await browser.newContext({ reducedMotion: 'reduce' }); const p = await ctx.newPage();
     await p.goto('./');
-    expect(await p.locator('#how h2 .w').first().evaluate(e => getComputedStyle(e).opacity)).toBe('1');
-    expect(await p.locator('#how video source').getAttribute('src')).toBeNull();
+    expect(await p.locator('#moments h2 .w').first().evaluate(e => getComputedStyle(e).opacity)).toBe('1');
+    expect(await p.locator('#updates video source').getAttribute('src')).toBeNull();
     await ctx.close();
   });
   test('no-JS: content is visible', async ({ browser }) => {
@@ -166,4 +166,23 @@ test('no photo is reused across tiles (one Commons source per file)', () => {
   expect(rows.length).toBe(6);
   for (const r of rows) expect(r.split('assets/').length - 1, r).toBe(1);
   expect(new Set(rows.map(r => r.split('|')[2].trim())).size).toBe(rows.length);
+});
+
+test.describe('simpler conversation section on a phone', () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+  test('short heading, text before a 16:9 family photo, visible without scrolling animation', async ({ page }) => {
+    await page.goto('./');
+    const h2 = page.locator('#how > h2');
+    await expect(h2).toHaveText('Life cover should be simpler.');
+    const text = page.locator('#how .split__text'), media = page.locator('#how .split__media');
+    await expect(text).toContainText('clear answers, straightforward records and people you can speak to');
+    const [t, m] = [await text.boundingBox(), await media.boundingBox()];
+    expect(t.y).toBeLessThan(m.y); // explanation before the image
+    expect(Math.abs(m.width / m.height - 16 / 9)).toBeLessThan(0.05);
+    expect(t.height).toBeLessThan(200); // no forced 400px text block
+    expect(await text.evaluate(e => getComputedStyle(e).opacity)).toBe('1');
+    expect(await h2.evaluate(e => getComputedStyle(e).opacity)).toBe('1');
+    expect(await page.locator('#how video').count()).toBe(0); // no clouds loop
+    expect(await media.locator('img').getAttribute('src')).toBe('assets/family.jpg');
+  });
 });

@@ -53,3 +53,13 @@ This static page has no connection to Omni or ADIL. The order's accounting items
 | Video playback in H.264 browser | `tools/chrome-video.mjs` in real Chrome: both loops playing (readyState 4, time advancing, no error). |
 | Typeface | Free Inter Tight Medium 500 (OFL); the reference font is licensed and not used. |
 | Reviewer re-check 1280 / 768 / 360 | See the report sent to the boss. |
+
+## Manus phone review (2 Nov 2026, "A simpler conversation")
+| # | Manus line | Done |
+|---|---|---|
+| 1 | Replace the sunset-cloud video | Clouds loop and poster deleted from this section. New real photo: `assets/family.jpg` (Commons "Family sitting together", Botswana, CC BY-SA 4.0, Abza1), faces and relationships visible. Logged in `CREDITS.md`, with the personality-rights note for HADES. |
+| 2 | Short landscape frame on phone | 16:9 frame (`aspect-ratio`), replaces the fixed 400px block; all faces kept in the crop. |
+| 3 | Explanation before the image; no forced height; no reveal dependence | Text first, `min-height` removed, heading and text no longer use the scroll-reveal. Test checks order, height, opacity. |
+| 4 | New heading and supporting line | "Life cover should be simpler." + "We are planning Alpha Life around clear answers, straightforward records and people you can speak to." |
+| 5 | Planned-brand wording stays prominent | Banner, hero subtitle, status and footer unchanged. |
+| - | Independent re-check (1280/768/360) fixes | Flat ticker tint (no peach wash), logo mark larger, moments band exact navy, stronger caption scrim, navy scrim on the closing loop, banner fits on 360, footer arcs behind text. |
