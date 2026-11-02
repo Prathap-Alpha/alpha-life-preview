@@ -1,7 +1,7 @@
 /* Alpha Life homepage. Layout measured against the CFO's visual reference; all copy, media and marks are our own. */
 @font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap}
 @font-face{font-family:"Inter";src:url(fonts/inter-latin-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap}
-:root{--navy:#1D3270;--navy-d:#14234F;--orange:#F47C20;--orange-ink:#A84300;--tint-o:#FDEBDD;--tint-n:#D9DEEE;--tint-n2:#AEB8DA;--blue:var(--navy);--blue-d:var(--navy-d);--ink:#141A20;--ink2:#28313A;--stone:#8B8680;--sand:#F1ECE9;--paper:#FAFCFD;--indigo:rgba(29,50,112,.94);--wrap:1120px;--ease:cubic-bezier(.22,1,.36,1)}
+:root{--navy:#1D3270;--navy-d:#14234F;--orange:#F47C20;--orange-ink:#A84300;--tint-o:#FDEBDD;--tint-n:#D9DEEE;--tint-n2:#AEB8DA;--blue:var(--navy);--blue-d:var(--navy-d);--ink:#141A20;--ink2:#28313A;--stone:#3B4A78;--sand:#EEF0F7;--paper:#FAFCFD;--indigo:rgba(29,50,112,.94);--wrap:1120px;--ease:cubic-bezier(.22,1,.36,1)}
 *{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:#fff;color:var(--ink);font:400 16px/1.4 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
 a{color:inherit}img,video,canvas{display:block;max-width:100%}h1,h2,h3,h4,p,ul,figure,blockquote{margin:0;padding:0}ul{list-style:none}
@@ -52,7 +52,7 @@ h1,h2,h3,h4,.logo{font-family:"Inter Tight",Inter,sans-serif;font-weight:600}
 
 .band--stone{background:var(--stone)}.band--stone h2{color:var(--paper);max-width:560px}
 .moments{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.moment{position:relative;height:500px;overflow:hidden;border-radius:4px;background:#333}.moment::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(transparent,rgba(20,26,32,.62));pointer-events:none}.moment figcaption,.moment .tag{z-index:1}.moment img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}.moment:hover img{transform:scale(1.04)}
+.moment{position:relative;height:500px;overflow:hidden;border-radius:4px;background:#333}.moment::after{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(transparent,rgba(20,26,32,.82));pointer-events:none}.moment figcaption,.moment .tag{z-index:1}.moment img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}.moment:hover img{transform:scale(1.04)}
 .moment figcaption{position:absolute;right:37px;bottom:38px;color:#fff;font:500 39px/1.1 Inter,sans-serif;text-shadow:0 2px 16px rgba(0,0,0,.45);text-align:right;max-width:80%}
 .tag{position:absolute;top:24px;right:24px;background:#141A20;color:#fff;border-radius:4px;padding:6px 12px;font-size:14px;font-weight:600}
 
@@ -94,7 +94,7 @@ blockquote{font:500 25px/30px "Inter Tight",Inter,sans-serif;color:#30363D}.attr
 .foot__in{position:relative;z-index:1;max-width:1072px;margin:auto}.foot__top{display:flex;justify-content:space-between;align-items:center;padding-bottom:64px;border-bottom:1px solid #141A20}
 .foot__badge{font-size:13px;font-weight:600;color:var(--navy);border:1px solid var(--tint-n2);border-radius:6px;padding:6px 10px}
 .foot__cols{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding-top:42px;min-height:380px}
-.foot h4{font-size:19px;margin-bottom:12px;color:#0A0F16}.foot__cols a,.foot__soon{display:block;font-size:13px;line-height:24px;color:#2B3556;text-decoration:none;transition:color .2s}.foot__cols a:hover{color:var(--blue)}.foot__soon{color:#757B8C}
+.foot h4{font-size:19px;margin-bottom:12px;color:#0A0F16}.foot__cols a,.foot__soon{display:block;font-size:13px;line-height:24px;color:#2B3556;text-decoration:none;transition:color .2s}.foot__cols a:hover{color:var(--blue)}.foot__soon{color:#5A6178}
 .foot__base{display:flex;justify-content:space-between;font-size:11px;color:#495057;padding-top:60px}
 .foot__rings{position:absolute;left:50%;bottom:-20px;width:1100px;transform:translateX(-50%);fill:none;stroke:url(#fr);stroke-width:1;max-width:none}
 

@@ -36,3 +36,10 @@ This static page has no connection to Omni or ADIL. The order's accounting items
 - Reference page height is longer on phones (390: 11,459 px vs ours about 10,100; 360: 11,500 vs about 10,200) and at 768 (11,088 vs about 9,850). Desktop is within 100 px (9,595 vs 9,495). Section-by-section heights on phones were not matched.
 - The reference uses people and safari photography; no free-licence people or Botswana cinematic footage was found, so landscape photographs and a US clouds loop stand in. Photos are reused across two tiles each (see `CREDITS.md`).
 - The reference's own typeface is licensed and not used; Inter Tight is used instead.
+
+## Review follow-up (2 Nov 2026, independent Manus-style review)
+- Off-palette warm greys `#8B8680` / `#F1ECE9` replaced by navy `#3B4A78` / pale navy tint `#EEF0F7`. Hero shader third colour darkened to navy-d to remove the periwinkle cast. Photo-caption gradient strengthened (60% height, .82). Footer "to follow" text darkened to `#5A6178`.
+- **Order versus measurement:** the order states reference hero h1 y≈354 and canvas 990 px. Measured on the live reference: h1 y=274 and canvas 810 at 1440/1280; y=206 and canvas 1089 at 390. The build follows the measurement. The order's figures look wrong; flagged for the CFO.
+- **Shader version:** order names Paper Shaders 0.0.82; 0.0.20 is vendored (the warp fragment source used by the reference). Not upgraded: no behavioural difference found.
+- **US footage:** the Joshua Tree loop is US footage (credited in `CREDITS.md`); no free Botswana equivalent found.
+- **Served commit:** verified after each push by fetching the live page and comparing its CSS/HTML to the commit.
