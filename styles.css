@@ -52,7 +52,7 @@ h1,h2,h3,h4,.logo{font-family:"Inter Tight",Inter,sans-serif;font-weight:500}
 
 .band--stone{background:var(--navy)}.band--stone h2{color:var(--paper);max-width:560px}
 .moments{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.moment{position:relative;height:500px;overflow:hidden;border-radius:4px;background:#333}.moment::after{content:"";position:absolute;inset:auto 0 0 0;height:70%;background:linear-gradient(transparent,rgba(12,20,48,.9));pointer-events:none}.moment figcaption,.moment .tag{z-index:1}.moment img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}.moment:hover img{transform:scale(1.04)}
+.moment{position:relative;height:500px;overflow:hidden;border-radius:4px;background:#333}.moment::after{content:"";position:absolute;inset:auto 0 0 0;height:70%;background:linear-gradient(transparent,rgba(12,20,48,.9));pointer-events:none}.moment figcaption,.moment .tag{z-index:1}.moment .pic,.moment img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}.moment:hover .pic{transform:scale(1.03)}
 .moment figcaption{position:absolute;right:37px;bottom:38px;color:#fff;font:500 39px/1.1 Inter,sans-serif;text-shadow:0 2px 16px rgba(0,0,0,.45);text-align:right;max-width:80%}
 .tag{position:absolute;top:24px;right:24px;background:#141A20;color:#fff;border-radius:4px;padding:6px 12px;font-size:14px;font-weight:600}
 
@@ -133,3 +133,8 @@ blockquote{font:500 25px/30px "Inter Tight",Inter,sans-serif;color:#30363D}.attr
   html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}
   .js .rise,.js .reveal-words .w{opacity:1;transform:none;filter:none}
 }
+
+.pic{display:block;width:100%;height:100%}.moment .pic{transition:transform 1s var(--ease)}.split__media .pic{height:100%}
+.final__bg{position:absolute;inset:0;overflow:hidden}.final__bg i{position:absolute;width:60%;height:200%;top:-50%;border-radius:50%;filter:blur(40px);opacity:.5;animation:drift 14s ease-in-out infinite alternate}.final__bg i:first-child{left:-10%;background:var(--navy)}.final__bg i:last-child{right:-10%;background:var(--orange);opacity:.22;animation-duration:19s}
+@keyframes drift{from{transform:translateX(-8%)}to{transform:translateX(18%)}}
+@media (prefers-reduced-motion:reduce){.final__bg i{animation:none}.moment .pic{transition:none}}

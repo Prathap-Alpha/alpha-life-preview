@@ -96,44 +96,36 @@ test.describe('menu', () => {
 });
 
 test.describe('media and motion', () => {
-  test('two live shader canvases, lazy muted videos', async ({ page }) => {
+  test('two live shader canvases, no video', async ({ page }) => {
     await page.goto('./');
     expect(await page.locator('[data-paper-shader] canvas').count()).toBe(2);
-    for (const v of await page.locator('video').all()) {
-      expect(await v.getAttribute('preload')).toBe('none');
-      expect(await v.evaluate(e => e.muted && e.loop && e.playsInline)).toBe(true);
-      expect(await v.locator('source').getAttribute('src')).toBeNull(); // nothing downloads before it nears the screen
-    }
+    expect(await page.locator('video').count()).toBe(0); // honest abstract animation only, no borrowed footage
   });
-  test('videos get their source only when scrolled to, and the file is served', async ({ page }) => {
-    await page.goto('./');
-    const v = page.locator('#updates video');
-    await v.scrollIntoViewIfNeeded();
-    await expect(v.locator('source')).toHaveAttribute('src', 'assets/final-loop.mp4');
-    const r = await page.request.get('./assets/final-loop.mp4');
-    expect(r.status()).toBe(200);
-    expect((await r.body()).length).toBeGreaterThan(100000); // bundled test Chromium has no H.264, so playback itself is checked in real Chrome
-  });
-  test('all photos load', async ({ page }) => {
+  test('images load (logo only; people and motifs are drawn inline)', async ({ page }) => {
     await page.goto('./');
     for (const img of await page.locator('main img').all()) await img.scrollIntoViewIfNeeded();
     await page.waitForTimeout(800);
     for (const img of await page.locator('main img').all()) expect(await img.evaluate(e => e.complete && e.naturalWidth > 0)).toBe(true);
   });
-  test('missing asset: page still works, alt text kept, no overflow', async ({ page }) => {
-    await page.route('**/assets/moment-1.jpg', r => r.abort());
-    await page.route('**/assets/final-loop.mp4', r => r.abort());
+  test('missing logo: page still works, alt text kept, no overflow', async ({ page }) => {
+    await page.route('**/assets/alpha-direct-logo.png', r => r.abort());
     const errors = []; page.on('pageerror', e => errors.push(e.message));
     await page.goto('./'); await page.locator('#moments').scrollIntoViewIfNeeded(); await page.waitForTimeout(600);
     expect(errors).toEqual([]);
-    expect(await page.locator('.moment img').first().getAttribute('alt')).toContain('baobab');
+    expect(await page.locator('img.logo__img').first().getAttribute('alt')).toBe('AlphaDirect');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   });
-  test('reduced motion: content visible, videos not auto-loaded', async ({ browser }) => {
+  test('moments are four human stories, no scenery or wildlife photographs', async ({ page }) => {
+    await page.goto('./');
+    expect(await page.locator('.moment').count()).toBe(4);
+    expect(await page.locator('main img').count()).toBe(0);
+    for (const l of await page.locator('.moment svg.pic').all()) expect(await l.getAttribute('aria-label')).toMatch(/parents|working adult|grandparent|older couple/);
+  });
+  test('reduced motion: content visible, closing animation still', async ({ browser }) => {
     const ctx = await browser.newContext({ reducedMotion: 'reduce' }); const p = await ctx.newPage();
     await p.goto('./');
     expect(await p.locator('#moments h2 .w').first().evaluate(e => getComputedStyle(e).opacity)).toBe('1');
-    expect(await p.locator('#updates video source').getAttribute('src')).toBeNull();
+    expect(await p.locator('.final__bg i').first().evaluate(e => getComputedStyle(e).animationName)).toBe('none');
     await ctx.close();
   });
   test('no-JS: content is visible', async ({ browser }) => {
@@ -161,16 +153,14 @@ test('credits list every media file', () => {
   for (const f of fs.readdirSync(new URL('../assets', import.meta.url))) expect(credits, f).toContain(f);
 });
 
-test('no photo is reused across tiles (one Commons source per file)', () => {
-  const rows = read('CREDITS.md').split('\n').filter(l => l.startsWith('| `assets/moment') || l.startsWith('| `assets/promise') || l.startsWith('| `assets/status'));
-  expect(rows.length).toBe(6);
-  for (const r of rows) expect(r.split('assets/').length - 1, r).toBe(1);
-  expect(new Set(rows.map(r => r.split('|')[2].trim())).size).toBe(rows.length);
+test('no photograph of any person, place or animal ships', () => {
+  const files = fs.readdirSync(new URL('../assets', import.meta.url));
+  expect(files.filter(f => !/^alpha-direct-logo\.png$/.test(f))).toEqual([]);
 });
 
 test.describe('simpler conversation section on a phone', () => {
   test.use({ viewport: { width: 390, height: 844 } });
-  test('short heading, text before a 16:9 family photo, visible without scrolling animation', async ({ page }) => {
+  test('short heading, text before a 16:9 family illustration, visible without scrolling animation', async ({ page }) => {
     await page.goto('./');
     const h2 = page.locator('#how > h2');
     await expect(h2).toHaveText('Life cover should be simpler.');
@@ -182,7 +172,7 @@ test.describe('simpler conversation section on a phone', () => {
     expect(t.height).toBeLessThan(200); // no forced 400px text block
     expect(await text.evaluate(e => getComputedStyle(e).opacity)).toBe('1');
     expect(await h2.evaluate(e => getComputedStyle(e).opacity)).toBe('1');
-    expect(await page.locator('#how video').count()).toBe(0); // no clouds loop
-    expect(await media.locator('img').getAttribute('src')).toBe('assets/family.jpg');
+    expect(await page.locator('#how video').count()).toBe(0);
+    expect(await media.locator('svg.pic').count()).toBe(1);
   });
 });

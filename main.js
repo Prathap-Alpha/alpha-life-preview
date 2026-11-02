@@ -1,5 +1,5 @@
 /* Alpha Life homepage behaviour: word and card
-   reveals, lazy video, mobile menu. Every effect has a reduced-motion or low-power fallback. */
+   reveals, mobile menu. Every effect has a reduced-motion or low-power fallback. */
 (function () {
   'use strict';
   document.documentElement.classList.add('js');
@@ -54,22 +54,4 @@
   } else {
     targets.forEach(function (el) { el.classList.add('in'); });
   }
-
-  // Lazy video: nothing downloads until it nears the screen; it plays only while visible
-  document.querySelectorAll('.lazy-video').forEach(function (video) {
-    if (reduced || saveData) return; // the poster stays
-    var loaded = false;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          if (!loaded) {
-            video.querySelectorAll('source').forEach(function (s) { s.src = s.dataset.src; });
-            video.load(); loaded = true;
-          }
-          var p = video.play(); if (p && p.catch) p.catch(function () {});
-        } else if (loaded) { video.pause(); }
-      });
-    }, { rootMargin: '200px' });
-    io.observe(video);
-  });
 })();
