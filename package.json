@@ -1,0 +1,25 @@
+{
+  "name": "alpha-life-preview",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prathap-Alpha/alpha-life-preview.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Prathap-Alpha/alpha-life-preview/issues"
+  },
+  "homepage": "https://github.com/Prathap-Alpha/alpha-life-preview#readme",
+  "private": "true",
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
+}

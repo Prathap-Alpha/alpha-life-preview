@@ -10,13 +10,20 @@
 
   // Mobile menu
   var toggle = document.querySelector('.nav-toggle'), nav = document.getElementById('nav');
-  toggle.addEventListener('click', function () {
-    var open = nav.classList.toggle('open');
+  function setMenu(open, returnFocus) {
+    nav.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', String(open));
+    if (!open && returnFocus) toggle.focus();
+  }
+  toggle.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) setMenu(false, true);
   });
-  nav.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A') { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+  document.addEventListener('pointerdown', function (e) {
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !toggle.contains(e.target)) setMenu(false);
   });
+  matchMedia('(min-width: 821px)').addEventListener('change', function (e) { if (e.matches) setMenu(false); });
 
   // Word-by-word blur reveal on headings
   document.querySelectorAll('.reveal-words').forEach(function (el) {

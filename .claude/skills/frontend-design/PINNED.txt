@@ -1,0 +1,1 @@
+ca45fc496a3436251f191354091d557da31c15b5 anthropics/skills skills/frontend-design (pinned, reviewed 2026-11-02)
