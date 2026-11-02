@@ -9,17 +9,20 @@ Only rights-cleared material is published here. Nothing was bought. The referenc
 
 The older 332x141 "Alpha SA Logo" file named in the correction order is a different, lower-resolution variant; the full-resolution brand logo is used instead (question sent to the CFO's boss session).
 
-## Pictures and animation: drawn by us, no photographs
-Manus imagery review, 2 Nov 2026 (not approved: scenery and wildlife, a family photo with no model releases, a US video). Every gap is closed by removing the material, not by finding a substitute with unclear rights.
+## Photographs: four Pexels stock photos supplied by the CFO (2 Nov 2026)
+Supplied as `Alpha_Life_Images_for_Claude.zip` (sources.json inside gives full records and sha256). Licence: [Pexels License](https://www.pexels.com/license/) (free commercial use, no attribution required). WebP copies resized only: no crop, retouch, recolour or text. Served locally, never hotlinked.
 
-| Was | Now | Rights |
-|---|---|---|
-| Four scenery photographs (baobab, sunrise, termite mound, salt pan) | Four drawn human-story scenes: parents and children at home, working adult and small shop, every generation together, older couple with a grandchild (inline SVG in `index.html`) | Ours, no people photographed |
-| Elephants and Okavango aerial photographs | Two drawn motifs: a shield inside widening rings, and a plain three-step path | Ours |
-| Family photograph (CC BY-SA, identifiable children, no releases) | Drawn family of three | Ours, no real person |
-| Joshua Tree (USA) video | Slow abstract brand-colour animation (CSS), still under reduced motion | Ours |
+| File | Title | Photographer | Source |
+|---|---|---|---|
+| `assets/01-young-family.webp` | Young Parents with Baby | Anna Shvets | https://www.pexels.com/photo/young-parents-with-baby-11369232/ |
+| `assets/02-family-together.webp` | Family Gathering for a Group Hug | August de Richelieu | https://www.pexels.com/photo/family-gathering-for-a-group-hug-4262424/ |
+| `assets/03-working-adult.webp` | Black man using laptop at home | Laker | https://www.pexels.com/photo/black-man-using-laptop-at-home-5792976/ |
+| `assets/04-later-life.webp` | Elderly couple sitting on sofa | Kampus Production | https://www.pexels.com/photo/elderly-couple-sitting-on-sofa-8871484/ |
 
-Nothing here shows a real customer, staff member or real family. When the CFO buys cleared photographs (iStock or a shoot, with model releases and guardian consent for children), they replace the drawn scenes. Keep the Alpha Direct navy/orange; one coherent style across South Africa, Namibia, Nigeria and Kenya.
+Rules kept: stock models, not Alpha Life customers or staff; no endorsement, testimonial, policyholder or illness/bereavement implied; no nationality or country claimed. **Open item:** individual model and guardian releases (the baby in 01, the children in 02) were not inspected by Pexels' licence; obtain any extra permission before the final advertising launch.
+
+## Drawn by us (no third-party rights)
+The "How" family illustration, the promise and status motifs and the closing animation are inline SVG/CSS drawn for this page. Removed after the Manus imagery review: scenery and wildlife photographs, the CC BY-SA family photo, and the US Joshua Tree video.
 
 ## Code and fonts
 | Asset | Origin | Licence |

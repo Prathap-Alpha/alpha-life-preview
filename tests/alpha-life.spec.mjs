@@ -101,7 +101,7 @@ test.describe('media and motion', () => {
     expect(await page.locator('[data-paper-shader] canvas').count()).toBe(2);
     expect(await page.locator('video').count()).toBe(0); // honest abstract animation only, no borrowed footage
   });
-  test('images load (logo only; people and motifs are drawn inline)', async ({ page }) => {
+  test('images load (logo and four stock photos)', async ({ page }) => {
     await page.goto('./');
     for (const img of await page.locator('main img').all()) await img.scrollIntoViewIfNeeded();
     await page.waitForTimeout(800);
@@ -118,8 +118,9 @@ test.describe('media and motion', () => {
   test('moments are four human stories, no scenery or wildlife photographs', async ({ page }) => {
     await page.goto('./');
     expect(await page.locator('.moment').count()).toBe(4);
-    expect(await page.locator('main img').count()).toBe(0);
-    for (const l of await page.locator('.moment svg.pic').all()) expect(await l.getAttribute('aria-label')).toMatch(/parents|working adult|grandparent|older couple/);
+    expect(await page.locator('.moment img.pic').count()).toBe(4);
+    for (const l of await page.locator('.moment img.pic').all()) { expect(await l.getAttribute('alt')).toMatch(/parents|working|family|older couple/i); expect(await l.getAttribute('width')).toBeTruthy(); }
+    expect(await page.locator('main img[src*="http"]').count()).toBe(0); // served locally, never hotlinked
   });
   test('reduced motion: content visible, closing animation still', async ({ browser }) => {
     const ctx = await browser.newContext({ reducedMotion: 'reduce' }); const p = await ctx.newPage();
@@ -153,9 +154,9 @@ test('credits list every media file', () => {
   for (const f of fs.readdirSync(new URL('../assets', import.meta.url))) expect(credits, f).toContain(f);
 });
 
-test('no photograph of any person, place or animal ships', () => {
+test('only the logo and the four licensed Pexels stock photos ship (no scenery, wildlife or video)', () => {
   const files = fs.readdirSync(new URL('../assets', import.meta.url));
-  expect(files.filter(f => !/^alpha-direct-logo\.png$/.test(f))).toEqual([]);
+  expect(files.sort()).toEqual(['01-young-family.webp','02-family-together.webp','03-working-adult.webp','04-later-life.webp','alpha-direct-logo.png']);
 });
 
 test.describe('simpler conversation section on a phone', () => {
