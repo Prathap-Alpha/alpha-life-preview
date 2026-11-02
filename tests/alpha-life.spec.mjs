@@ -98,7 +98,7 @@ test.describe('menu', () => {
 test.describe('media and motion', () => {
   test('two live shader canvases, lazy muted videos', async ({ page }) => {
     await page.goto('./');
-    expect(await page.locator('canvas[data-paper-shaders]').count()).toBe(2);
+    expect(await page.locator('[data-paper-shader] canvas').count()).toBe(2);
     for (const v of await page.locator('video').all()) {
       expect(await v.getAttribute('preload')).toBe('none');
       expect(await v.evaluate(e => e.muted && e.loop && e.playsInline)).toBe(true);
@@ -159,4 +159,11 @@ for (const [w, h] of [[1440, 900], [1280, 900], [768, 1024], [390, 844], [360, 8
 test('credits list every media file', () => {
   const credits = read('CREDITS.md');
   for (const f of fs.readdirSync(new URL('../assets', import.meta.url))) expect(credits, f).toContain(f);
+});
+
+test('no photo is reused across tiles (one Commons source per file)', () => {
+  const rows = read('CREDITS.md').split('\n').filter(l => l.startsWith('| `assets/moment') || l.startsWith('| `assets/promise') || l.startsWith('| `assets/status'));
+  expect(rows.length).toBe(6);
+  for (const r of rows) expect(r.split('assets/').length - 1, r).toBe(1);
+  expect(new Set(rows.map(r => r.split('|')[2].trim())).size).toBe(rows.length);
 });

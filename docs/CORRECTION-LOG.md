@@ -33,13 +33,23 @@ Order: "Alpha Life / Omni: rejected design, fix now" (Manus, 2 Nov 2026). Branch
 This static page has no connection to Omni or ADIL. The order's accounting items (company-scoped APIs, idempotent events, GL/TB reconciliation, isolated tests) belong to the separate Omni build brief ALPHALIFE-20261102 and are not part of this site. Nothing here posts to, reads from or is deployed to Omni. No live postings were made.
 
 ## Known remaining gaps
-- Reference page height is longer on phones (390: 11,459 px vs ours about 10,100; 360: 11,500 vs about 10,200) and at 768 (11,088 vs about 9,850). Desktop is within 100 px (9,595 vs 9,495). Section-by-section heights on phones were not matched.
-- The reference uses people and safari photography; no free-licence people or Botswana cinematic footage was found, so landscape photographs and a US clouds loop stand in. Photos are reused across two tiles each (see `CREDITS.md`).
-- The reference's own typeface is licensed and not used; Inter Tight is used instead.
+- People and family photography: not found under a free licence; Botswana landscape and wildlife photographs stand in. Held open for the CFO (no purchases).
+- US Joshua Tree loop stays as the closing loop (credited); no free Botswana footage found.
+- The reference's own typeface (a licensed grotesque) is not used; Inter Tight Medium 500 is the free stand-in.
 
 ## Review follow-up (2 Nov 2026, independent Manus-style review)
 - Off-palette warm greys `#8B8680` / `#F1ECE9` replaced by navy `#3B4A78` / pale navy tint `#EEF0F7`. Hero shader third colour darkened to navy-d to remove the periwinkle cast. Photo-caption gradient strengthened (60% height, .82). Footer "to follow" text darkened to `#5A6178`.
 - **Order versus measurement:** the order states reference hero h1 y≈354 and canvas 990 px. Measured on the live reference: h1 y=274 and canvas 810 at 1440/1280; y=206 and canvas 1089 at 390. The build follows the measurement. The order's figures look wrong; flagged for the CFO.
-- **Shader version:** order names Paper Shaders 0.0.82; 0.0.20 is vendored (the warp fragment source used by the reference). Not upgraded: no behavioural difference found.
+- **Shader version (fixed 2 Nov, boss order):** moved to the reviewed Paper Shaders 0.0.82 (vendored ES modules + noise texture, `hero-shader.js`), still two live canvases. Old 0.0.20 source removed.
 - **US footage:** the Joshua Tree loop is US footage (credited in `CREDITS.md`); no free Botswana equivalent found.
 - **Served commit:** verified after each push by fetching the live page and comparing its CSS/HTML to the commit.
+
+## Boss follow-up (2 Nov 2026, outside-review lines, none deferred)
+| Line | Done |
+|---|---|
+| Phone and tablet page heights match the reference | Section spacing tuned. Ours minus reference: 360 +75, 390 -1, 768 -31, 1280 0, 1440 0 (px, under 1%). `shots/ours-measure.json` vs `shots/ref-measure.json`. |
+| No photo reused across tiles | `promise.jpg` (elephants) and `status.jpg` (aerial delta) are new Diego Delso CC BY-SA 4.0 files; six distinct photos, logged in `CREDITS.md`; a test enforces one source per file. |
+| Shader 0.0.82 | Done, see above. |
+| Video playback in H.264 browser | `tools/chrome-video.mjs` in real Chrome: both loops playing (readyState 4, time advancing, no error). |
+| Typeface | Free Inter Tight Medium 500 (OFL); the reference font is licensed and not used. |
+| Reviewer re-check 1280 / 768 / 360 | See the report sent to the boss. |

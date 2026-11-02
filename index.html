@@ -34,8 +34,8 @@
 <main id="main">
 <section class="hero" id="top">
   <div class="hero__shader" aria-hidden="true">
-    <canvas class="shader shader--flip" data-paper-shaders="true" data-c1="rgb(255,255,255)" data-c2="rgb(244,124,32)" data-c3="rgb(255,255,255)"></canvas>
-    <canvas class="shader shader--cool" data-paper-shaders="true" data-c1="rgb(255,255,255)" data-c2="rgb(29,50,112)" data-c3="rgb(20,35,79)"></canvas>
+    <div class="shader shader--flip" data-c1="rgb(255,255,255)" data-c2="rgb(244,124,32)" data-c3="rgb(255,255,255)"></div>
+    <div class="shader shader--cool" data-c1="rgb(255,255,255)" data-c2="rgb(29,50,112)" data-c3="rgb(20,35,79)"></div>
   </div>
   <div class="hero__in">
     <h1 class="hero__title">Life cover,<br>planned in plain words.</h1>
@@ -149,7 +149,7 @@
         <blockquote>&ldquo;I understood it the first time, and I always knew what would happen next.&rdquo;</blockquote>
         <p class="attrib">Our design goal<small>Not a customer quote. Real stories will appear here only once there are real customers.</small></p>
       </div>
-      <div class="split__media rise"><img loading="lazy" src="assets/promise.jpg" width="1330" height="800" alt="Photo: sunrise over the Okavango Delta, Botswana"></div>
+      <div class="split__media rise"><img loading="lazy" src="assets/promise.jpg" width="1330" height="800" alt="Photo: African elephants in the Okavango Delta, Botswana"></div>
     </div>
   </div>
 </section>
@@ -163,7 +163,7 @@
         <p>Licences, approvals and certificates will be named here only once they have been granted.</p>
         <a class="btn btn--sm" href="#updates">Read project updates</a>
       </div>
-      <div class="split__media rise"><img loading="lazy" src="assets/status.jpg" width="1330" height="800" alt="Photo: the Makgadikgadi salt pan under a pale sky, Botswana"></div>
+      <div class="split__media rise"><img loading="lazy" src="assets/status.jpg" width="1330" height="800" alt="Photo: aerial view of the Okavango Delta waterways, Botswana"></div>
     </div>
   </div>
 </section>
@@ -198,5 +198,6 @@
   <svg class="foot__rings" viewBox="0 0 1100 320" aria-hidden="true"><defs><linearGradient id="fr" x1="0" x2="1"><stop stop-color="#1D3270"/><stop offset="1" stop-color="#F47C20"/></linearGradient></defs><ellipse cx="550" cy="300" rx="540" ry="295"/><ellipse cx="550" cy="310" rx="460" ry="250"/><ellipse cx="550" cy="310" rx="360" ry="190"/><ellipse cx="550" cy="310" rx="290" ry="150"/></svg>
 </footer>
 <script src="main.js" defer></script>
+<script type="module" src="hero-shader.js"></script>
 </body>
 </html>
