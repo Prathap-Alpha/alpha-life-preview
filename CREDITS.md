@@ -21,6 +21,8 @@ Supplied as `Alpha_Life_Images_for_Claude.zip` (sources.json inside gives full r
 
 Rules kept: stock models, not Alpha Life customers or staff; no endorsement, testimonial, policyholder or illness/bereavement implied; no nationality or country claimed. **Open item:** individual model and guardian releases (the baby in 01, the children in 02) were not inspected by Pexels' licence; obtain any extra permission before the final advertising launch.
 
+**Paid-ads rule (CFO, 2 Nov 2026):** the Pexels photos stay out of paid advertising until model and guardian releases are sorted. They are used on this preview page only.
+
 ## Drawn by us (no third-party rights)
 The "How" family illustration, the promise and status motifs and the closing animation are inline SVG/CSS drawn for this page. Removed after the Manus imagery review: scenery and wildlife photographs, the CC BY-SA family photo, and the US Joshua Tree video.
 
