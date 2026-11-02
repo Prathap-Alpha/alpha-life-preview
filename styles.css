@@ -139,3 +139,6 @@ blockquote{font:500 25px/30px "Inter Tight",Inter,sans-serif;color:#30363D}.attr
 @keyframes drift{from{transform:translateX(-8%)}to{transform:translateX(18%)}}
 @media (prefers-reduced-motion:reduce){.final__bg i{animation:none}.moment .pic{transition:none}}
 @media (max-width:720px){.moment:nth-child(1),.moment:nth-child(4){height:340px}.moment:nth-child(1) img.pic{object-position:42% 40%!important}.moment:nth-child(4) img.pic{object-position:50% 20%!important}}
+
+.tag--l{right:auto;left:37px}.moment:nth-child(1) img.pic{object-position:46% 0%!important}
+@media (max-width:720px){.tag--l{left:14px;right:auto}.moment:nth-child(1){height:420px}.moment:nth-child(1) img.pic{object-position:56% 0%!important}.foot__rings{bottom:-120px}}

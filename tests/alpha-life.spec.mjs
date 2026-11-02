@@ -161,7 +161,7 @@ test('only the logo and the four licensed Pexels stock photos ship (no scenery, 
 
 test.describe('simpler conversation section on a phone', () => {
   test.use({ viewport: { width: 390, height: 844 } });
-  test('short heading, text before a 16:9 family illustration, visible without scrolling animation', async ({ page }) => {
+  test('short heading, text before a 16:9 family photograph, visible without scrolling animation', async ({ page }) => {
     await page.goto('./');
     const h2 = page.locator('#how > h2');
     await expect(h2).toHaveText('Life cover should be simpler.');
@@ -174,6 +174,7 @@ test.describe('simpler conversation section on a phone', () => {
     expect(await text.evaluate(e => getComputedStyle(e).opacity)).toBe('1');
     expect(await h2.evaluate(e => getComputedStyle(e).opacity)).toBe('1');
     expect(await page.locator('#how video').count()).toBe(0);
-    expect(await media.locator('svg.pic').count()).toBe(1);
+    expect(await media.locator('img.pic').count()).toBe(1);
+    expect(await media.locator('svg').count()).toBe(0);
   });
 });
