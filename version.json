@@ -1,0 +1,9 @@
+{
+  "version": "20261103-meanwhile-multicurrency",
+  "site": "Alpha Life client-review preview",
+  "currencies": ["USD", "EUR", "GBP", "ZAR", "BWP"],
+  "visionFilm": "assets/vision-film.mp4",
+  "visionFilmDurationSeconds": 8.064,
+  "fictionalPromotionalSpeakers": true,
+  "policyOffer": false
+}

@@ -1,112 +1,272 @@
-/* Alpha Life: word/card reveals, mobile menu and a lazy, silent brand film.
-   Generated film is decorative; website content never depends on its playback. */
 (function () {
-  'use strict';
-  document.documentElement.classList.add('js');
-  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var saveData = !!(navigator.connection && navigator.connection.saveData);
+  "use strict";
+  var doc = document;
+  var root = doc.documentElement;
+  var toggle = doc.querySelector(".nav-toggle");
+  var nav = doc.getElementById("nav");
+  var header = doc.querySelector(".site-header");
+  root.classList.add("js");
 
-  var toggle = document.querySelector('.nav-toggle'), nav = document.getElementById('nav');
-  function setMenu(open, returnFocus) {
-    nav.classList.toggle('open', open);
-    toggle.setAttribute('aria-expanded', String(open));
-    if (!open && returnFocus) toggle.focus();
+  if (header) {
+    var updateHeader = function () {
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+    };
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
   }
-  toggle.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
-  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && nav.classList.contains('open')) setMenu(false, true);
-  });
-  document.addEventListener('pointerdown', function (e) {
-    if (nav.classList.contains('open') && !nav.contains(e.target) && !toggle.contains(e.target)) setMenu(false);
-  });
-  matchMedia('(min-width: 821px)').addEventListener('change', function (e) { if (e.matches) setMenu(false); });
 
-  document.querySelectorAll('.reveal-words').forEach(function (el) {
-    var label = el.textContent, i = 0;
-    el.setAttribute('aria-label', label);
-    var words = label.split(' ');
-    el.textContent = '';
-    words.forEach(function (word, n) {
-      var w = document.createElement('span');
-      w.className = 'w'; w.setAttribute('aria-hidden', 'true'); w.style.setProperty('--i', i++);
-      w.textContent = word + (n < words.length - 1 ? ' ' : '');
-      el.appendChild(w);
+  function setMenu(open, restoreFocus) {
+    nav.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    if (!open && restoreFocus) toggle.focus();
+  }
+  if (toggle && nav) {
+    toggle.addEventListener("click", function () {
+      setMenu(!nav.classList.contains("is-open"));
+    });
+    nav.addEventListener("click", function (event) {
+      if (event.target.closest("a")) setMenu(false);
+    });
+    doc.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && nav.classList.contains("is-open"))
+        setMenu(false, true);
+    });
+    doc.addEventListener("pointerdown", function (event) {
+      if (
+        nav.classList.contains("is-open") &&
+        !nav.contains(event.target) &&
+        !toggle.contains(event.target)
+      )
+        setMenu(false);
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 800) setMenu(false);
+    });
+  }
+
+  var buttons = Array.prototype.slice.call(
+    doc.querySelectorAll("[data-currency]"),
+  );
+  var preview = doc.querySelector("[data-currency-preview]");
+  var select = doc.getElementById("currency-select");
+  var status = doc.querySelector("[data-save-status]");
+  var names = {
+    USD: "US Dollars",
+    EUR: "Euro",
+    GBP: "British Pounds",
+    ZAR: "South African Rand",
+    BWP: "Botswana Pula",
+  };
+  var chosen = "USD";
+
+  function setCurrency(value) {
+    chosen = Object.prototype.hasOwnProperty.call(names, value) ? value : "USD";
+    buttons.forEach(function (button) {
+      var selected = button.dataset.currency === chosen;
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+    if (preview) {
+      preview.textContent = "";
+      var code = doc.createElement("strong");
+      code.textContent = chosen;
+      preview.append(
+        code,
+        doc.createTextNode(" — explore protection in " + names[chosen] + "."),
+      );
+    }
+    if (select) select.value = chosen;
+  }
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      setCurrency(button.dataset.currency);
     });
   });
-
-  document.querySelectorAll('.trio, .moments, .outcomes, .split').forEach(function (group) {
-    group.querySelectorAll('.rise').forEach(function (el, n) { el.style.setProperty('--d', n * 90 + 'ms'); });
-  });
-  var targets = document.querySelectorAll('.rise, .reveal-words');
-  if ('IntersectionObserver' in window && !reduced) {
-    var seen = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); seen.unobserve(e.target); }
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-    targets.forEach(function (el) { seen.observe(el); });
-  } else {
-    targets.forEach(function (el) { el.classList.add('in'); });
+  try {
+    var saved = localStorage.getItem("alpha-life-currency");
+    if (saved) setCurrency(saved);
+  } catch (error) {
+    /* The currency choice remains usable without storage. */
   }
+  if (select)
+    select.addEventListener("change", function () {
+      setCurrency(select.value);
+    });
+  var save = doc.querySelector("[data-save-choice]");
+  if (save)
+    save.addEventListener("click", function () {
+      var message =
+        "Saved on this device. This preview does not send an application.";
+      try {
+        localStorage.setItem("alpha-life-currency", chosen);
+      } catch (error) {
+        message =
+          "Storage is blocked, but your selection works for this visit. This preview does not send an application.";
+      }
+      if (status) status.textContent = message;
+    });
 
-  document.querySelectorAll('video.lazy-video').forEach(function (video) {
-    var scene = video.closest('.film__scene');
-    var button = document.querySelector('.film-toggle[data-video="' + video.id + '"]');
-    var loaded = false, visible = false, manualPause = false;
-    var allowed = !reduced && !saveData;
-    button.hidden = false;
-    video.muted = true;
+  var film = doc.getElementById("savanna-film");
+  var filmButton = doc.querySelector("[data-film-toggle]");
+  var hero = doc.querySelector(".hero");
+  var story = doc.getElementById("vision-film");
+  var motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var reduced = motion.matches;
+  var saveData = !!(navigator.connection && navigator.connection.saveData);
 
-    function showPlaying(playing) {
-      scene.classList.toggle('is-playing', playing);
-      button.textContent = playing ? 'Pause film' : 'Play film';
+  if (film && filmButton && hero) {
+    var loaded = false;
+    var visible = false;
+    var manualPause = false;
+    filmButton.hidden = false;
+    film.muted = true;
+
+    function showHeroPlaying(playing) {
+      filmButton.textContent = playing ? "Pause film" : "Play film";
+      filmButton.setAttribute("aria-pressed", String(playing));
+      hero.classList.toggle("is-playing", playing);
     }
-    function load() {
+    function loadHero() {
       if (loaded) return;
-      video.querySelectorAll('source[data-src]').forEach(function (source) {
+      film.querySelectorAll("source[data-src]").forEach(function (source) {
         source.src = source.dataset.src;
       });
       loaded = true;
-      video.load();
+      film.load();
     }
-    function play() {
-      if (!allowed || manualPause || !visible || document.hidden) return;
-      load();
-      var request = video.play();
-      if (request && request.catch) request.catch(function () { showPlaying(false); });
+    function pauseHero() {
+      film.pause();
+      showHeroPlaying(false);
     }
-    function pause() {
-      video.pause();
-      showPlaying(false);
+    function playHero(force) {
+      if (
+        manualPause ||
+        !visible ||
+        doc.hidden ||
+        (story && !story.paused) ||
+        ((reduced || saveData) && !force)
+      )
+        return;
+      loadHero();
+      var request = film.play();
+      if (request && request.catch)
+        request.catch(function () {
+          showHeroPlaying(false);
+        });
     }
-    video.addEventListener('playing', function () { showPlaying(true); });
-    video.addEventListener('pause', function () { showPlaying(false); });
-    video.addEventListener('error', function () { showPlaying(false); });
-    video.addEventListener('loadeddata', function () { if (visible) play(); });
-    button.addEventListener('click', function () {
-      if (!video.paused) {
+    filmButton.addEventListener("click", function () {
+      if (!film.paused) {
         manualPause = true;
-        pause();
+        pauseHero();
       } else {
-        allowed = true;
         manualPause = false;
         visible = true;
-        play();
+        playHero(true);
       }
     });
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) pause();
-      else play();
+    film.addEventListener("playing", function () {
+      showHeroPlaying(true);
     });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        visible = entries[0].isIntersecting;
-        if (visible) play();
-        else pause();
-      }, { threshold: 0.1 }).observe(scene);
+    film.addEventListener("pause", function () {
+      showHeroPlaying(false);
+    });
+    film.addEventListener("error", pauseHero);
+    doc.addEventListener("visibilitychange", function () {
+      if (doc.hidden) pauseHero();
+      else if (!manualPause) playHero();
+    });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        function (entries) {
+          visible = entries[0].isIntersecting;
+          if (visible && !manualPause) playHero();
+          else if (!visible) pauseHero();
+        },
+        { threshold: 0.12 },
+      ).observe(hero);
+    } else {
+      visible = true;
     }
-    // Without observer support, the poster stays until the viewer presses Play.
-    showPlaying(false);
-  });
+    var changeMotion = function (event) {
+      reduced = event.matches;
+      if (reduced) pauseHero();
+    };
+    if (motion.addEventListener)
+      motion.addEventListener("change", changeMotion);
+    else if (motion.addListener) motion.addListener(changeMotion);
+    showHeroPlaying(false);
+    if (!reduced && !saveData && visible) playHero();
+  }
+
+  var storyButton = doc.querySelector("[data-vision-play]");
+  var storyStatus = doc.querySelector("[data-vision-status]");
+  if (story && storyButton) {
+    var storyLoaded = false;
+    var storyAttempted = false;
+    var loadingTimer;
+    storyButton.hidden = false;
+    story.controls = false;
+    function clearLoadingTimer() {
+      window.clearTimeout(loadingTimer);
+    }
+    function storyFailure() {
+      if (!storyAttempted) return;
+      storyAttempted = false;
+      storyLoaded = false;
+      clearLoadingTimer();
+      story.pause();
+      story.controls = false;
+      storyButton.hidden = false;
+      if (storyStatus)
+        storyStatus.textContent =
+          "The film could not start. Please press Play to try again.";
+    }
+    story.querySelectorAll("source").forEach(function (source) {
+      source.addEventListener("error", storyFailure);
+    });
+    storyButton.addEventListener("click", function () {
+      clearLoadingTimer();
+      storyAttempted = true;
+      if (storyStatus) storyStatus.textContent = "";
+      loadingTimer = window.setTimeout(function () {
+        if (storyAttempted && story.paused) storyFailure();
+      }, 10000);
+      if (!storyLoaded) {
+        story.querySelectorAll("source[data-src]").forEach(function (source) {
+          source.src = source.dataset.src;
+        });
+        storyLoaded = true;
+        story.load();
+      }
+      story.controls = true;
+      var request = story.play();
+      if (request && request.catch) request.catch(storyFailure);
+    });
+    story.addEventListener("playing", function () {
+      clearLoadingTimer();
+      storyButton.hidden = true;
+      if (film) film.pause();
+    });
+    story.addEventListener("ended", function () {
+      clearLoadingTimer();
+      storyAttempted = false;
+      storyButton.hidden = false;
+    });
+    story.addEventListener("error", storyFailure);
+    doc.addEventListener("visibilitychange", function () {
+      if (doc.hidden) {
+        clearLoadingTimer();
+        storyAttempted = false;
+        story.pause();
+        storyButton.hidden = false;
+      }
+    });
+  }
+
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").catch(function () {
+      /* Online reading does not depend on service-worker support. */
+    });
+  }
 })();

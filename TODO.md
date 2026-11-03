@@ -1,8 +1,11 @@
-# Alpha Life — authorised marketing-demo update, 3 November 2026
+# Alpha Life — multi-currency replacement, 3 November 2026
 
-- [x] Use the four real photographs from Alpha_Life_Images_for_Claude.zip in all editorial photo panels; keep supplied files unchanged, preserve faces/proportions and retain the official logo and navy/orange palette.
-- [x] Create an original cinematic clip of a fictional person walking through African savanna, inspired by TurnStay's placement and treatment without copying its footage; provide poster fallback, silent loop and accessible Pause/Play controls.
-- [x] Put subtle, beautiful, slow-moving Alpha Life/protection-across-Africa text over the walking film; respect reduced motion and Save-Data.
-- [x] Present this as marketing material to pitch the CFO's boss: confident pan-African launch-concept copy, seven illustrative country experiences for South Africa, Namibia, Nigeria, Kenya, Zambia, Zimbabwe and Botswana, clearly identified as a demo rather than actual licensed operations.
-- [x] Preserve a working mobile menu, desktop/phone image layout, no-JavaScript content, media failure handling and zero horizontal overflow; add the standing community/remembrance demo feature without personal data collection.
-- [ ] Publish only the authorised static marketing preview to the existing GitHub Pages URL and verify the delivered version and media on that URL. No Omni/accounting/customer/policy data changes.
+- [x] Completely replace the old presentation with Meanwhile-inspired simplicity, layout and pacing, using our own branding/content/media. Remove noisy shaders, orbit graphics, market/community panels and tickers; do not copy Meanwhile’s logo, code or product/investor claims.
+- [x] Lead with “Life insurance in the currency of your choice” and the family-future line naming US Dollars, Euro, British Pounds, South African Rand and Botswana Pula. Offer exactly USD, EUR, GBP, ZAR and BWP; no Bitcoin.
+- [x] Retain the approved AlphaDirect logo and savannah-walking film unchanged, with a poster, silent loop, explicit motion control, reduced-motion/save-data support and a failed-video fallback.
+- [x] Keep concise benefits, a short process, FAQs and one final action. Show US$100,000 only as a proposed free-cover underwriting threshold subject to approval, never free insurance or bound coverage.
+- [x] Preserve phone/desktop navigation, keyboard interaction, no-JavaScript reading/FAQ, no clipped controls, and core offline reading/currency/preference features after a successful first online visit. No personal-data collection or real policy/premium/financial submission.
+- [x] Add an original fictional African promotional film in the story panel. Start with “Mr Arun Iyer’s vision for an AI-first life insurance company is an excellent idea,” followed by agreement from the second speaker. Explicit fictional-dramatization notice; no executive impersonation or fabricated customer testimonial. User-started sound, captions, poster and reliable retry.
+- [x] Audit the whole page against the supplied reference; consolidate source/concept findings into one concise repository review. Baseline coverage plus final affected-path rechecks cover 19 distinct scenarios; all identified issues are resolved.
+- [ ] Preserve licenses and illustrative notices without public tool branding; retain a rollback source version, publish only the static replacement to the existing GitHub Pages address, and verify the exact delivered files and film.
+- [ ] Deliver one source ZIP containing the readable source and the single consolidated review, suitable for code audit. Keep temporary logs, screenshots and installed dependencies out of the handover.

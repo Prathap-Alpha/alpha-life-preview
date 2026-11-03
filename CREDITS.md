@@ -1,40 +1,30 @@
-# Alpha Life homepage: origin and licence of every asset
+# Alpha Life — media and font credits
 
-This preview uses the supplied stock photos under the Pexels licence, the unchanged parent-brand logo and an original AI-created brand film. Stock model/guardian releases have not been inspected; the paid-ad restriction below remains in force. The reference site's videos, photographs, logos, fonts and copy were inspected only; none are in this folder and none are linked.
+The page uses AlphaDirect's approved parent-brand logo, locally hosted licensed photographs and an original illustrative savannah brand film. The Meanwhile site is a design reference only: its logo, investor identities, photographs, video, branded artwork, fonts, copy and source code are not reproduced.
 
-## Brand
-| File | Origin | Licence |
+## Brand and film
+
+`assets/alpha-direct-logo.png` is the approved AlphaDirect logo, used unchanged and proportionally on a light surface. `assets/savanna-walk.mp4` is an original AI-created illustrative brand film of a fictional adult seen from behind in African savannah; it is not footage of customers, employees or policyholders. `assets/savanna-walk-poster.webp` is the matching film still used when motion is unavailable or disabled.
+
+## Supplied preview photographs
+
+The following photographs were supplied for this marketing preview and are used under the [Pexels License](https://www.pexels.com/license/). They show stock models, not Alpha Life customers or staff. The images must remain outside paid advertising until any required individual model and guardian releases have been confirmed.
+
+| Asset | Photographer | Original source |
 |---|---|---|
-| `assets/alpha-direct-logo.png` | Byte-for-byte copy of the approved AlphaDirect parent logo (`C:\titan-local\brand\alpha-direct-logo.png`, sha256 `0628b69f179ed486b451d2a5150d5f6b027c28e97839440dc2b894b1129479e8`). Unchanged: no redraw, recolour, filter or stretch. Shown on white only. | AlphaDirect brand asset |
+| `01-young-family.webp` | Anna Shvets | https://www.pexels.com/photo/young-parents-with-baby-11369232/ |
+| `02-family-together.webp` | August de Richelieu | https://www.pexels.com/photo/family-gathering-for-a-group-hug-4262424/ |
+| `03-working-adult.webp` | Laker | https://www.pexels.com/photo/black-man-using-laptop-at-home-5792976/ |
+| `04-later-life.webp` | Kampus Production | https://www.pexels.com/photo/elderly-couple-sitting-on-sofa-8871484/ |
 
-The older 332x141 "Alpha SA Logo" file named in the correction order is a different, lower-resolution variant; the full-resolution brand logo is used instead (question sent to the CFO's boss session).
+The supplied WebP assets are hosted locally. No endorsement, testimonial, medical condition, bereavement or nationality is claimed for any pictured person.
 
-## Photographs: four Pexels stock photos supplied by the CFO (2 Nov 2026)
-Supplied as `Alpha_Life_Images_for_Claude.zip` (sources.json inside gives full records and sha256). Licence: [Pexels License](https://www.pexels.com/license/) (free commercial use, no attribution required). WebP copies resized only: no crop, retouch, recolour or text. Served locally, never hotlinked.
+## Fonts
 
-| File | Title | Photographer | Source |
-|---|---|---|---|
-| `assets/01-young-family.webp` | Young Parents with Baby | Anna Shvets | https://www.pexels.com/photo/young-parents-with-baby-11369232/ |
-| `assets/02-family-together.webp` | Family Gathering for a Group Hug | August de Richelieu | https://www.pexels.com/photo/family-gathering-for-a-group-hug-4262424/ |
-| `assets/03-working-adult.webp` | Black man using laptop at home | Laker | https://www.pexels.com/photo/black-man-using-laptop-at-home-5792976/ |
-| `assets/04-later-life.webp` | Elderly couple sitting on sofa | Kampus Production | https://www.pexels.com/photo/elderly-couple-sitting-on-sofa-8871484/ |
+Inter and Inter Tight are locally hosted open fonts under the SIL Open Font License 1.1; the corresponding license texts are retained under `fonts/`. No font files were copied from the design-reference site.
 
-Rules kept: stock models, not Alpha Life customers or staff; no endorsement, testimonial, policyholder or illness/bereavement implied; no nationality or country claimed. **Open item:** individual model and guardian releases (the baby in 01, the children in 02) were not inspected by Pexels' licence; obtain any extra permission before the final advertising launch.
+This website is a client-review marketing concept, not a live policy offer or evidence of approved product terms, underwriting limits, regulatory permissions, quoted premiums or payment facilities.
 
-**Paid-ads rule (CFO, 2 Nov 2026):** the Pexels photos stay out of paid advertising until model and guardian releases are sorted. They are used on this preview page only.
+## Promotional story film
 
-## Original brand film (3 November 2026)
-| File | Origin | Use |
-|---|---|---|
-| `assets/savanna-walk.mp4` | Created for the CFO's request using Manus Seedance 2.5 and a fictional rear-view walker reference. Original eight-second silent generated clip gently retimed to approximately ten seconds, H.264 1280x720, no audio. Not copied from TurnStay. | AI-created aspirational brand scene, not real customers, employees, policyholders, a testimonial or proof of availability in any country. |
-| `assets/savanna-walk-poster.webp` | A still extracted from the original brand film and compressed to WebP. | Reduced-motion, no-JavaScript, Save-Data and failed-play fallback. |
-
-Every editorial photo panel now uses the CFO-supplied WebPs above. The promise/status illustrations and unused person symbols were removed. Only small interface icons, decorative rings and the closing abstract CSS animation remain drawn. The film's accessible website text reads "Alpha Life", "A future worth protecting" and "For your life. Across Africa". The entire presentation is labelled a marketing demo, not a live insurance offer; country selection illustrates launch-market experiences, not licensed operations. The scene is visibly labelled AI-created. Scenery/wildlife photos and US Joshua Tree footage are absent.
-
-## Code and fonts
-| Asset | Origin | Licence |
-|---|---|---|
-| Hero shader (`vendor/paper-shaders-0.0.82/`, driven by `hero-shader.js`) | Paper Shaders `warp`, npm `@paper-design/shaders` 0.0.82, unmodified dist | Apache-2.0, licence text in that folder |
-| Inter, Inter Tight (`fonts/`; Inter Tight Medium 500 is our free stand-in for the reference's licensed grotesque, whose files are not used) | npm `@fontsource-variable` | SIL OFL 1.1, `fonts/*-OFL.txt` |
-| `.claude/skills/frontend-design/` | anthropics/skills at commit ca45fc496a3436251f191354091d557da31c15b5, unmodified | see `LICENSE.txt` in that folder |
-| Icons | Drawn inline for this page | Ours |
+`assets/vision-film.mp4` is an original AI-created promotional dramatization with two entirely fictional African adult speakers. The opening praises Mr Arun Iyer's **vision for an AI-first life insurance company**; the second speaker agrees. No executive is shown or impersonated. Neither speaker is represented as a real customer, employee or policyholder, and the dialogue contains no assertion of a world-first insurer, payout, guarantee, license or live cover. The finished film carries a persistent fictional-dramatization label; the page repeats that disclosure beside the player. `assets/vision-poster.webp` is the matching film still, and `assets/vision-film.vtt` supplies the verified English captions.
