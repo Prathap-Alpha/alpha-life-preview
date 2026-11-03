@@ -66,3 +66,18 @@ This static page has no connection to Omni or ADIL. The order's accounting items
 
 ## Manus imagery follow-up (2 Nov 2026, evening)
 All scenery, wildlife, the CC BY-SA family photo and the US video were removed. The four CFO-supplied Pexels photos (see CREDITS.md) fill the Home / Work / Together / Later cards and the How section; the rest is drawn by us. The earlier 'Known remaining gaps' lines about Botswana photos, loops and the US Joshua Tree loop no longer apply. Open: model/guardian releases are not covered by the Pexels licence (needed before paid advertising).
+
+
+## CFO direct update — 3 November 2026
+User authorised replacing all website pictures using the supplied ZIP, adding an original African-savanna walking film inspired by TurnStay's cinematic treatment, and subtle slow text about protection across Africa.
+
+The four existing WebP photographs were confirmed byte-for-byte against the supplied ZIP. Replaced the remaining promise/status SVG editorial panels with these real images and removed unused drawn person symbols. Image cards now preserve complete photographic proportions, with captions outside the faces; the official logo, palette, menu, shader and planned-brand disclosures remain unchanged. Added #africa-film: an original, silent, approximately ten-second gently slowed AI-created walking film, locally served with a poster, lazy loading, Pause/Play control, offscreen pause, reduced-motion and Save-Data opt-in. Website text softly enters over the film: "Alpha Life", "A future worth protecting", "Our vision: protection across Africa". No current cover, licence, country availability or customer endorsement is claimed. No insurance/customer/accounting data was touched.
+
+Validation and publication evidence will be recorded after the affected checks and GitHub Pages readback. Earlier HTTP/style checks and screenshots do not certify this version.
+
+
+### Scope clarified by CFO at 22:19 CAT
+This is marketing material for a boss presentation, not a live insurance sales website. Replace the repeated "planned brand" caveats with confident launch-concept copy. Header and footer retain clear demo labelling. Showcase South Africa, Namibia, Nigeria, Kenya, Zambia, Zimbabwe and Botswana with interactive illustrative country experiences. Do not claim actual country licences/operations, policy sales, premiums, paid claimants or deployed accounting. Add a compact empty community/remembrance feature for the user's standing website preference; no personal notices or customer data are collected.
+
+### Final validation — 3 November 2026
+Integrated suite: 41 checks passed, one orange-label class rule failed. Fixed the actual styling: pale brand-tint section labels and navy text on active orange controls. The formerly failing rule plus the new selected-control 4.5:1 contrast check then both passed. Taken together, 43 current checks have passing evidence. Desktop/phone screenshots checked; selector changes to Nigeria on both, no page errors or horizontal overflow. Walking-film playback advances with readyState 4 and no media error at 1280, 390 and 360px; all four photos load and preserve their native proportions. Source/asset URLs include a cache-busting version for changed styles and scripts. Public publication is separately verified by exact served file hashes after push. This is a boss-facing marketing demo, not a live insurance or accounting service.

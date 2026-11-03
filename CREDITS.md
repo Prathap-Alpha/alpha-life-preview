@@ -1,6 +1,6 @@
 # Alpha Life homepage: origin and licence of every asset
 
-Only rights-cleared material is published here. Nothing was bought. The reference site's videos, photographs, logos, fonts and copy were inspected only; none are in this folder and none are linked.
+This preview uses the supplied stock photos under the Pexels licence, the unchanged parent-brand logo and an original AI-created brand film. Stock model/guardian releases have not been inspected; the paid-ad restriction below remains in force. The reference site's videos, photographs, logos, fonts and copy were inspected only; none are in this folder and none are linked.
 
 ## Brand
 | File | Origin | Licence |
@@ -23,8 +23,13 @@ Rules kept: stock models, not Alpha Life customers or staff; no endorsement, tes
 
 **Paid-ads rule (CFO, 2 Nov 2026):** the Pexels photos stay out of paid advertising until model and guardian releases are sorted. They are used on this preview page only.
 
-## Drawn by us (no third-party rights)
-The "How" family illustration, the promise and status motifs and the closing animation are inline SVG/CSS drawn for this page. Removed after the Manus imagery review: scenery and wildlife photographs, the CC BY-SA family photo, and the US Joshua Tree video.
+## Original brand film (3 November 2026)
+| File | Origin | Use |
+|---|---|---|
+| `assets/savanna-walk.mp4` | Created for the CFO's request using Manus Seedance 2.5 and a fictional rear-view walker reference. Original eight-second silent generated clip gently retimed to approximately ten seconds, H.264 1280x720, no audio. Not copied from TurnStay. | AI-created aspirational brand scene, not real customers, employees, policyholders, a testimonial or proof of availability in any country. |
+| `assets/savanna-walk-poster.webp` | A still extracted from the original brand film and compressed to WebP. | Reduced-motion, no-JavaScript, Save-Data and failed-play fallback. |
+
+Every editorial photo panel now uses the CFO-supplied WebPs above. The promise/status illustrations and unused person symbols were removed. Only small interface icons, decorative rings and the closing abstract CSS animation remain drawn. The film's accessible website text reads "Alpha Life", "A future worth protecting" and "For your life. Across Africa". The entire presentation is labelled a marketing demo, not a live insurance offer; country selection illustrates launch-market experiences, not licensed operations. The scene is visibly labelled AI-created. Scenery/wildlife photos and US Joshua Tree footage are absent.
 
 ## Code and fonts
 | Asset | Origin | Licence |

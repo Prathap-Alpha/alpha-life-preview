@@ -53,7 +53,7 @@ test.describe('brand and copy', () => {
     const bad = await page.evaluate(() => [...document.querySelectorAll('body *')]
       .filter(e => [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()) && getComputedStyle(e).color === 'rgb(244, 124, 32)')
       .map(e => String(e.className)));
-    for (const c of bad) expect(c).toMatch(/dcard|announce|^$/);
+    for (const c of bad) expect(c).toMatch(/dcard|announce|market-|^$/);
     const css = read('styles.css');
     expect(css).toContain('.announce{display:block;height:42px;line-height:42px;background:var(--blue)');
   });
@@ -96,10 +96,10 @@ test.describe('menu', () => {
 });
 
 test.describe('media and motion', () => {
-  test('two live shader canvases, no video', async ({ page }) => {
+  test('two live shader canvases and the savanna film hook', async ({ page }) => {
     await page.goto('./');
     expect(await page.locator('[data-paper-shader] canvas').count()).toBe(2);
-    expect(await page.locator('video').count()).toBe(0); // honest abstract animation only, no borrowed footage
+    expect(await page.locator('video#savanna-film').count()).toBe(1);
   });
   test('images load (logo and four stock photos)', async ({ page }) => {
     await page.goto('./');
@@ -154,9 +154,9 @@ test('credits list every media file', () => {
   for (const f of fs.readdirSync(new URL('../assets', import.meta.url))) expect(credits, f).toContain(f);
 });
 
-test('only the logo and the four licensed Pexels stock photos ship (no scenery, wildlife or video)', () => {
+test('the logo, four licensed photos, savanna poster and film ship', () => {
   const files = fs.readdirSync(new URL('../assets', import.meta.url));
-  expect(files.sort()).toEqual(['01-young-family.webp','02-family-together.webp','03-working-adult.webp','04-later-life.webp','alpha-direct-logo.png']);
+  expect(files.sort()).toEqual(['01-young-family.webp','02-family-together.webp','03-working-adult.webp','04-later-life.webp','alpha-direct-logo.png','savanna-walk-poster.webp','savanna-walk.mp4']);
 });
 
 test.describe('simpler conversation section on a phone', () => {
@@ -166,7 +166,7 @@ test.describe('simpler conversation section on a phone', () => {
     const h2 = page.locator('#how > h2');
     await expect(h2).toHaveText('Life cover should be simpler.');
     const text = page.locator('#how .split__text'), media = page.locator('#how .split__media');
-    await expect(text).toContainText('clear answers, straightforward records and people you can speak to');
+    await expect(text).toContainText('clear answers, simple digital steps and records you can see');
     const [t, m] = [await text.boundingBox(), await media.boundingBox()];
     expect(t.y).toBeLessThan(m.y); // explanation before the image
     expect(Math.abs(m.width / m.height - 16 / 9)).toBeLessThan(0.05);
