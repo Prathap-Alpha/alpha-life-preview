@@ -1,6 +1,6 @@
 # Alpha Life — website and film audit
 
-**4 November 2026 · PASS for film-update publication.** The 3 November whole-site concept audit remains valid: layout, typography, logo, savannah hero, five-currency choices and policy-proposal qualifications are unchanged. The new story film meets the requested minimum nine seconds and uses “Mr Arun” only.
+**4 November 2026 · PASS · Published and verified.** The 3 November whole-site concept audit remains valid: layout, typography, logo, savannah hero, five-currency choices and policy-proposal qualifications are unchanged. The new story film meets the requested minimum nine seconds and uses “Mr Arun” only.
 
 | Area | Result | Verified outcome |
 |---|---|---|
@@ -10,8 +10,8 @@
 | Site concept | PASS | Meanwhile-inspired simple hierarchy and pacing retained. Original branding, hero, USD/EUR/GBP/ZAR/BWP choices, benefits, process, FAQs and local preference flow unchanged. |
 | Commercial integrity | PASS | US$100,000 remains a proposed underwriting threshold, not free insurance. No Bitcoin, new payout guarantee, premium collection, application submission or backend/financial-data change. |
 
-**Evidence:** All six affected checks passed: natural user-started playback/captions and minimum duration, blocked-media retry, reduced-motion behavior, save-data behavior, scoped cache without eager movies, and core offline reading/preferences/FAQ/posters. Independent source-path review passed. Video analysis confirmed both complete spoken lines and Mr Arun-only naming. JavaScript syntax and source-whitespace checks pass.
+**Evidence:** All six affected checks passed: user-started playback/captions and minimum duration, blocked-media retry, reduced-motion behavior, save-data behavior, scoped cache without eager movies, and core offline reading/preferences/FAQ/posters. Independent source-path review passed. Video analysis confirmed both complete spoken lines and Mr Arun-only naming. JavaScript syntax and source-whitespace checks pass. CSS, application JavaScript, original logo and savannah-film bytes remain unchanged.
 
-**Scope:** Only the story-panel media/text, matching captions/credits, release marker, cache version and related checks changed. New asset paths prevent returning visitors receiving the old short film. The previous files are retained solely for compatibility with older cached visits; current HTML points to the new version.
+**Scope:** Only the story-panel media/text, matching captions/credits, release marker, cache version and related checks changed. Fresh asset paths prevent returning visitors receiving the old short film. Earlier files are retained solely for older cached visits; current HTML references the new version.
 
-**Publication gate:** Exact-file verification of the updated public page, code, release marker and new film/poster/captions is required before the new client link is confirmed. The existing hosting address remains https://prathap-alpha.github.io/alpha-life-preview/.
+**Publication:** The [updated film on the client-review website](https://prathap-alpha.github.io/alpha-life-preview/index.html?v=20261104-life-film-v5#vision) and all eight checked page/code/release-marker/new-media files match the released source byte-for-byte. The downloadable finished MP4 is identical to the published film. Hosting and the rest of the website remain unchanged.
