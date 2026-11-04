@@ -117,12 +117,14 @@ test("fictional story film has explicit audio, captions and user-started playbac
   await expect(page.locator(".vision-story figcaption")).toContainText(
     "Fictional speakers, not real customer testimonials",
   );
-  await expect(page.locator(".film-transcript")).toContainText("Mr Arun Iyer");
+  await expect(page.locator(".film-transcript")).toContainText("Mr Arun");
+  await expect(page.locator(".film-transcript")).toContainText("Alpha Life");
+  await expect(page.locator(".film-transcript")).not.toContainText("Iyer");
   await expect(page.locator("#vision-film source")).not.toHaveAttribute("src");
   await page.locator("[data-vision-play]").click();
   await expect(page.locator("#vision-film source")).toHaveAttribute(
     "src",
-    "assets/vision-film.mp4",
+    "assets/vision-film-20261104.mp4",
   );
   await expect
     .poll(() =>
@@ -130,17 +132,18 @@ test("fictional story film has explicit audio, captions and user-started playbac
     )
     .toBeGreaterThanOrEqual(2);
   expect(
-    await page
-      .locator("#vision-film")
-      .evaluate((video) => ({
-        controls: video.controls,
-        muted: video.muted,
-        paused: video.paused,
-      })),
+    await page.locator("#vision-film").evaluate((video) => video.duration),
+  ).toBeGreaterThanOrEqual(9);
+  expect(
+    await page.locator("#vision-film").evaluate((video) => ({
+      controls: video.controls,
+      muted: video.muted,
+      paused: video.paused,
+    })),
   ).toEqual({ controls: true, muted: false, paused: false });
   await expect(page.locator("#vision-film track")).toHaveAttribute(
     "src",
-    "assets/vision-film.vtt",
+    "assets/vision-film-20261104.vtt",
   );
 });
 
@@ -149,7 +152,9 @@ test("failed story media keeps the poster and exposes a retry", async ({
 }) => {
   const context = await browser.newContext({ serviceWorkers: "block" });
   const page = await context.newPage();
-  await page.route("**/assets/vision-film.mp4", (route) => route.abort());
+  await page.route("**/assets/vision-film-20261104.mp4", (route) =>
+    route.abort(),
+  );
   await page.goto("./");
   await page.locator("[data-vision-play]").click();
   await expect(page.locator("[data-vision-status]")).toContainText(
@@ -158,7 +163,7 @@ test("failed story media keeps the poster and exposes a retry", async ({
   await expect(page.locator("[data-vision-play]")).toBeVisible();
   await expect(page.locator("#vision-film")).toHaveAttribute(
     "poster",
-    "assets/vision-poster.webp",
+    "assets/vision-poster-20261104.webp",
   );
   await context.close();
 });

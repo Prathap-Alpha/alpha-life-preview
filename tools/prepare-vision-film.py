@@ -8,10 +8,12 @@ import tempfile
 parser = argparse.ArgumentParser()
 parser.add_argument('source', type=Path, help='Approved original promotional clip')
 parser.add_argument('--output-dir', type=Path, default=Path(__file__).resolve().parents[1] / 'assets')
+parser.add_argument('--asset-version', default='', help='Optional filename version, e.g. 20261104')
 args = parser.parse_args()
 args.output_dir.mkdir(parents=True, exist_ok=True)
-video = args.output_dir / 'vision-film.mp4'
-poster = args.output_dir / 'vision-poster.webp'
+suffix = '-' + args.asset_version if args.asset_version else ''
+video = args.output_dir / ('vision-film' + suffix + '.mp4')
+poster = args.output_dir / ('vision-poster' + suffix + '.webp')
 font = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 with tempfile.TemporaryDirectory() as temporary:
     label = Path(temporary) / 'label.txt'

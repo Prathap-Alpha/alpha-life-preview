@@ -1,18 +1,17 @@
-# Alpha Life — final website audit
+# Alpha Life — website and film audit
 
-**3 November 2026 · PASS · Published and verified.** The replacement closely matches Meanwhile’s simple visual concept and pacing, using AlphaDirect branding, the retained savannah film and multi-currency life-insurance messaging. It is an intentional adaptation—not a pixel-identical copy or a live policy offer.
+**4 November 2026 · PASS for film-update publication.** The 3 November whole-site concept audit remains valid: layout, typography, logo, savannah hero, five-currency choices and policy-proposal qualifications are unchanged. The new story film meets the requested minimum nine seconds and uses “Mr Arun” only.
 
 | Area | Result | Verified outcome |
 |---|---|---|
-| Hero and navigation | PASS | Full-bleed walking film, dark contrast layer, light display type, lime actions and transparent-to-white header. Original logo and walking-film bytes are unchanged. |
-| Vision film | PASS | Two fictional African adults. Opening: “Mr Arun Iyer’s vision for an AI-first life insurance company is an excellent idea.” Reply: “Absolutely.” Verified 8.064-second H.264/AAC film, user-started sound, captions and persistent fictional-dramatization disclosure. |
-| Product concept | PASS | “Life insurance in the currency of your choice.” Exactly USD, EUR, GBP, ZAR and BWP. No Bitcoin, fabricated investor backing, world-first assertion, payout guarantee or copied Bermuda claims. |
-| Reference layout | PASS | Mint story panel, five-currency choice, lavender ruled benefits with quiet icons, dark three-step process, full-width ruled FAQ and simple closing action. |
-| Mobile and resilience | PASS | 360, 390, 768 and 1440-pixel checks: no clipped controls or horizontal overflow. Keyboard/menu, no-JavaScript anchors/FAQ, reduced-motion/save-data and offline core reading/selection work. |
-| Commercial integrity | PASS | US$100,000 remains a **proposed underwriting threshold**, qualified beside the figure, not free insurance. Preferences stay on-device; no policy, premium, payment or application submission. |
+| Longer story film | PASS | Actual exported duration **12.064 seconds**, H.264/AAC, 1280×720. Woman: “Mr Arun's vision for Alpha Life is an excellent idea.” Man: “Life insurance in the currency of your choice, designed around African families.” Speech is audible and complete; no surname is added. |
+| Identity and disclosure | PASS | The same approved fictional African adults; no executive impersonation or fabricated real-customer experience. Persistent fictional-dramatization label, matching poster, captions and updated transcript. |
+| Playback and caching | PASS | User-started sound, reliable failed-download retry, new film/poster/caption filenames and scoped cache `alpha-life-preview-20261104-v5`. Reduced-motion/save-data do not pre-download speech video. |
+| Site concept | PASS | Meanwhile-inspired simple hierarchy and pacing retained. Original branding, hero, USD/EUR/GBP/ZAR/BWP choices, benefits, process, FAQs and local preference flow unchanged. |
+| Commercial integrity | PASS | US$100,000 remains a proposed underwriting threshold, not free insurance. No Bitcoin, new payout guarantee, premium collection, application submission or backend/financial-data change. |
 
-**Verification:** 19 distinct scenarios covered by the baseline run and targeted rechecks. All four affected/recovery checks passed in the final run: normal story playback, genuinely blocked media, no-JavaScript navigation/FAQ and a non-settling play request. JavaScript syntax and source-whitespace checks pass. Independent source/concept review and desktop/phone captures support this sign-off.
+**Evidence:** All six affected checks passed: natural user-started playback/captions and minimum duration, blocked-media retry, reduced-motion behavior, save-data behavior, scoped cache without eager movies, and core offline reading/preferences/FAQ/posters. Independent source-path review passed. Video analysis confirmed both complete spoken lines and Mr Arun-only naming. JavaScript syntax and source-whitespace checks pass.
 
-**Resolved:** hero layers/contrast, redundant copy, benefit numbering, FAQ width, cross-project cache risk, no-JavaScript smooth-scroll interference and reliable source-error/10-second media retry handling. The blocked-media fixture now disables service-worker interception. Core offline assets include text, fonts, posters and captions; uncached speech video still needs a connection.
+**Scope:** Only the story-panel media/text, matching captions/credits, release marker, cache version and related checks changed. New asset paths prevent returning visitors receiving the old short film. The previous files are retained solely for compatibility with older cached visits; current HTML points to the new version.
 
-**Publication:** The [client-review page](https://prathap-alpha.github.io/alpha-life-preview/index.html?v=20261103-meanwhile-multicurrency) and all eight checked page/code/promotional-media files match the released source byte-for-byte. GitHub Pages confirms a successful build for application commit `463bfee`. Public logo and savannah routes also respond successfully. Only this static preview changed; no insurance backend or financial records were altered.
+**Publication gate:** Exact-file verification of the updated public page, code, release marker and new film/poster/captions is required before the new client link is confirmed. The existing hosting address remains https://prathap-alpha.github.io/alpha-life-preview/.

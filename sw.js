@@ -1,5 +1,5 @@
 const PREFIX = "alpha-life-preview-";
-const CACHE = PREFIX + "20261103-v4";
+const CACHE = PREFIX + "20261104-v5";
 const SCOPE = self.registration.scope;
 const CORE = [
   "./",
@@ -8,8 +8,8 @@ const CORE = [
   "./main.js?v=20261103-meanwhile-v4",
   "./assets/alpha-direct-logo.png",
   "./assets/savanna-walk-poster.webp",
-  "./assets/vision-poster.webp",
-  "./assets/vision-film.vtt",
+  "./assets/vision-poster-20261104.webp",
+  "./assets/vision-film-20261104.vtt",
   "./fonts/inter-latin-wght-normal.woff2",
   "./fonts/inter-tight-latin-wght-normal.woff2",
 ].map((path) => new URL(path, SCOPE).href);
