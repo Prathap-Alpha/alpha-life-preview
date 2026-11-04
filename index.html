@@ -18,6 +18,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="styles.css?v=20261103-meanwhile-v4" />
+    <link rel="stylesheet" href="demo/quote.css?v=20261104-demo-v1" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -378,6 +379,152 @@
         </div>
       </section>
 
+<section id="quote" class="section demo-app" aria-labelledby="demo-title">
+  <div class="demo-ribbon">DEMO: no real cover, no real money, sample details only.</div>
+  
+  <div class="demo-header">
+    <div class="section-intro">
+      <p class="eyebrow">Interactive Demo</p>
+      <h2 id="demo-title">Experience the process.</h2>
+      <p>Generate a quote, issue a sample policy, and test our mock claim submission. Note: The API enforces limits and refuses real personal details.</p>
+    </div>
+  </div>
+
+  <div id="demo-error" class="demo-message error" hidden></div>
+  <div id="demo-success" class="demo-message success" hidden></div>
+
+  <div class="demo-grid">
+    <div class="demo-main">
+      <div class="demo-panel is-active" id="panel-quote">
+        <h3>1. Get a Quote</h3>
+        <form id="form-quote">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="q-product">Product</label>
+              <select id="q-product" name="product" required>
+                <option value="">Select a product</option>
+                <option value="starter">Starter (Fixed Cover)</option>
+                <option value="family_term">Family Term</option>
+                <option value="funeral_basic">Funeral Basic</option>
+                <option value="funeral_plus">Funeral Plus</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="q-cover">Cover (USD Equivalent)</label>
+              <select id="q-cover" name="cover" required><option value="">Select a product first</option></select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="q-currency">Currency</label>
+              <select id="q-currency" name="currency" required>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="ZAR">ZAR</option>
+                <option value="BWP">BWP</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="q-dob">Date of Birth</label>
+              <input type="date" id="q-dob" name="date_of_birth" value="1990-01-01" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="q-smoker">Smoker</label>
+            <select id="q-smoker" name="smoker" required>
+              <option value="false">No</option>
+              <option value="true">Yes</option>
+            </select>
+          </div>
+          <button type="submit" class="button button-dark">Get Quote</button>
+        </form>
+      </div>
+
+      <div class="demo-panel" id="panel-apply" hidden>
+        <h3>2. Quote Result & Apply</h3>
+        <div id="quote-result" class="quote-card"></div>
+        <form id="form-apply">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="a-holder">Policyholder Name</label>
+              <input type="text" id="a-holder" name="holder_name" value="Thabo Sample" required>
+            </div>
+            <div class="form-group">
+              <label for="a-beneficiary">Beneficiary Name</label>
+              <input type="text" id="a-beneficiary" name="beneficiary_name" value="Kagiso Sample" required>
+            </div>
+          </div>
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="a-accept" name="accept_demo" checked required>
+            <label for="a-accept">I accept this is a demo, no real cover provided.</label>
+          </div>
+          <div class="action-row">
+            <button type="submit" class="button button-dark">Pay (Demo) & Issue Policy</button>
+            <button type="button" class="button button-light" id="btn-back-quote">Back</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="demo-panel" id="panel-policy" hidden>
+        <h3>3. Policy Issued</h3>
+        <div id="policy-details" class="policy-card"></div>
+        <div class="action-row">
+           <button type="button" class="button button-dark" id="btn-show-claim">Submit a Mock Claim</button>
+           <button type="button" class="button button-light" id="btn-start-over">Start Over</button>
+        </div>
+      </div>
+
+      <div class="demo-panel" id="panel-claim" hidden>
+        <h3>File a Mock Claim</h3>
+        <p style="margin-bottom:16px; font-size:14px; color:var(--muted);">For policy: <strong id="claim-policy-number"></strong></p>
+        <form id="form-claim">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-type">Claim Type</label>
+              <select id="c-type" name="claim_type" required>
+                <option value="death">Death</option>
+                <option value="funeral">Funeral</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="c-date">Event Date (Past)</label>
+              <input type="date" id="c-date" name="event_date" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="c-story">Story (Do not use real names, IDs or phones)</label>
+            <textarea id="c-story" name="story" rows="3" required>Sample claim event for demonstration purposes.</textarea>
+          </div>
+          <div class="action-row">
+            <button type="submit" class="button button-dark">Submit Claim</button>
+            <button type="button" class="button button-light" id="btn-cancel-claim">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="demo-side">
+      <div class="demo-panel" id="panel-lookup">
+        <h3>Lookup & Track</h3>
+        <p style="font-size:14px; color:var(--muted); margin-bottom:20px;">Check an existing demo policy or track a mock claim.</p>
+        <form id="form-lookup">
+          <div class="form-group">
+            <label for="l-number">Reference (DEMO-AL-... or DEMO-CL-...)</label>
+            <input type="text" id="l-number" name="number" placeholder="DEMO-AL-000123" required>
+          </div>
+          <div class="form-group">
+            <label for="l-pin">PIN (4 digits)</label>
+            <input type="text" id="l-pin" name="pin" maxlength="4" inputmode="numeric" pattern="[0-9]{4}" title="4 digits" required>
+          </div>
+          <button type="submit" class="button button-dark" style="width:100%">Search</button>
+        </form>
+        <div id="lookup-result" class="lookup-card" hidden></div>
+      </div>
+    </div>
+  </div>
+</section>
+
       <section class="start section" id="start" aria-labelledby="start-title">
         <div class="start-inner">
           <h2 id="start-title">Your family. Your future. Your currency.</h2>
@@ -430,5 +577,6 @@
       </div>
     </footer>
     <script src="main.js?v=20261103-meanwhile-v4" defer></script>
+    <script src="demo/quote.js?v=20261104-demo-v1" defer></script>
   </body>
 </html>

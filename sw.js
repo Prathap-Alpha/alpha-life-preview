@@ -1,11 +1,13 @@
 const PREFIX = "alpha-life-preview-";
-const CACHE = PREFIX + "20261104-v5";
+const CACHE = PREFIX + "20261104-v6";
 const SCOPE = self.registration.scope;
 const CORE = [
   "./",
   "./index.html",
   "./styles.css?v=20261103-meanwhile-v4",
   "./main.js?v=20261103-meanwhile-v4",
+  "./demo/quote.css?v=20261104-demo-v1",
+  "./demo/quote.js?v=20261104-demo-v1",
   "./assets/alpha-direct-logo.png",
   "./assets/savanna-walk-poster.webp",
   "./assets/vision-poster-20261104.webp",
