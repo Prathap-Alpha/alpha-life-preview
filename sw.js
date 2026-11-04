@@ -1,5 +1,5 @@
 const PREFIX = "alpha-life-preview-";
-const CACHE = PREFIX + "20261104-v6";
+const CACHE = PREFIX + "20261104-v7";
 const SCOPE = self.registration.scope;
 const CORE = [
   "./",
